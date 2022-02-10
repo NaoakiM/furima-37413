@@ -28,30 +28,30 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null: false |
-| email              | string | null: false |
-| password           | string | null: false |
+| Column             | Type   | Options                            |
+| ------------------ | ------ | -----------                        |
+| nickname           | string | null: false                        |
+| email              | string | null: false, unique: true          |
+| encrypted_password | string | null: false                        |
 
 ## items テーブル
 
 | Column             | Type       | Options                        |
 | ------             | ------     | -----------                    |
-| product name       | string     | null: false                    |
-| category           | string     | null: false                    |
-| price              | string     | null: false                    |
+| product name       | string     | null: false, foreign_key: true |
+| category_id        | integer    | null: false, foreign_key: true |
+| price              | integer    | null: false                    |
 | seller             | string     | null: false                    |
 
-## purchase record テーブル
+## purchase_record テーブル
 
 | Column             | Type       | Options                        |
 | ------             | ---------- | ------------------------------ |
-| buyer              | string     | null: false                    |
-| shipping address   | string     | null: false                    |
+| buyer              | string     | null: false, foreign_key: true |
+| shipping address   | string     | null: false, foreign_key: true |
 
-## shipping information テーブル
+## shipping_information テーブル
 
 | Column             | Type       | Options                        |
 | ------             | ---------- | ------------------------------ |
-| shipping address   | string     | null: false                    |
+| shipping_address   | string     | null: false, foreign_key: true |
