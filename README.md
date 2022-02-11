@@ -61,7 +61,7 @@ Things you may want to cover:
 | ------             | ---------- | ------------------------------ |
 | shipping_address   | string     | null: false                    |
 | postal_code        | string     | null: false                    |
-| prefecture         | string     | null: false                    |
+| prefecture         | integer    | null: false                    |
 | city               | string     | null: false                    |
 | addresses          | string     | null: false                    |
 | phone_number       | string     | null: false                    |
