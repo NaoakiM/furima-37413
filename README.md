@@ -40,6 +40,8 @@ Things you may want to cover:
 | user_birth_date    | date   | null: false                        |
 
 ### アソシエーション
+has_many:items
+has_many:purchase_record
 
 
 ## items テーブル
@@ -60,6 +62,8 @@ Things you may want to cover:
 | user                          | references | null: false, foreign_key: true |
 
 ### アソシエーション
+belongs_to:user
+has_one:purchase_record
 
 
 ## purchase_record テーブル
@@ -70,6 +74,10 @@ Things you may want to cover:
 | item               | references | null: false, foreign_key: true |
 
 ### アソシエーション
+belongs_to:user
+belongs_to:items
+has_one:shipping_information
+
 
 
 ## shipping_information テーブル
@@ -84,3 +92,4 @@ Things you may want to cover:
 | phone_number       | string     | null: false                    |
 
 ### アソシエーション
+belongs_to:purchase_record
