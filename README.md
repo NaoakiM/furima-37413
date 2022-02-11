@@ -52,14 +52,13 @@ Things you may want to cover:
 
 | Column             | Type       | Options                        |
 | ------             | ---------- | ------------------------------ |
-| buyer              | string     | null: false                    |
-| shipping_address   | string     | null: false                    |
+| user               | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
 
 ## shipping_information テーブル
 
 | Column             | Type       | Options                        |
 | ------             | ---------- | ------------------------------ |
-| shipping_address   | string     | null: false                    |
 | postal_code        | string     | null: false                    |
 | prefecture         | integer    | null: false                    |
 | city               | string     | null: false                    |
