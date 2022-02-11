@@ -41,7 +41,7 @@ Things you may want to cover:
 
 ### アソシエーション
 has_many:items
-has_many:purchase_record
+has_many:purchase_records
 
 
 ## items テーブル
@@ -50,12 +50,12 @@ has_many:purchase_record
 | ------                        | ------     | -----------                    |
 | item_image                    | string     | null: false                    |
 | item_name                     | string     | null: false                    |
-| item_info                     | string     | null: false                    |
+| item_info                     | text       | null: false                    |
 | item_category_id              | integer    | null: false                    |
-| item_sales_status_id          | string     | null: false                    |
-| item_shipping_fee_status_id   | string     | null: false                    |
-| item_prefecture_id            | string     | null: false                    |
-| item_scheduled_delivery_id    | string     | null: false                    |
+| item_sales_status_id          | integer    | null: false                    |
+| item_shipping_fee_status_id   | integer    | null: false                    |
+| item_prefecture_id            | integer    | null: false                    |
+| item_scheduled_delivery_id    | integer    | null: false                    |
 | item_price                    | integer    | null: false                    |
 | user                          | references | null: false, foreign_key: true |
 
@@ -86,7 +86,7 @@ has_one:shipping_information
 | item_prefecture_id | integer    | null: false                    |
 | city               | string     | null: false                    |
 | addresses          | string     | null: false                    |
-| building           | string     | null: false                    |
+| building           | string     | unique: true                   |
 | phone_number       | string     | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
