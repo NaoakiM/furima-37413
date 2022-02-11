@@ -48,7 +48,6 @@ has_many:purchase_records
 
 | Column                        | Type       | Options                        |
 | ------                        | ------     | -----------                    |
-| item_image                    | string     | null: false                    |
 | item_name                     | string     | null: false                    |
 | item_info                     | text       | null: false                    |
 | item_category_id              | integer    | null: false                    |
@@ -86,9 +85,8 @@ has_one:shipping_information
 | item_prefecture_id | integer    | null: false                    |
 | city               | string     | null: false                    |
 | addresses          | string     | null: false                    |
-| building           | string     | unique: true                   |
+| building           | string     | null                           |
 | phone_number       | string     | null: false                    |
-| user               | references | null: false, foreign_key: true |
 
 ### アソシエーション
 belongs_to:purchase_record
