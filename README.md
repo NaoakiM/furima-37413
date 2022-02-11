@@ -33,39 +33,35 @@ Things you may want to cover:
 | nickname           | string | null: false                        |
 | email              | string | null: false, unique: true          |
 | encrypted_password | string | null: false                        |
-| last-name          | string | null: false                        |
-| first-name         | string | null: false                        |
-| last-name-kana     | string | null: false                        |
-| first-name-kana    | string | null: false                        |
-| user_birth_date    | string | null: false                        |
+| last_name          | string | null: false                        |
+| first_name         | string | null: false                        |
+| last_name_kana     | string | null: false                        |
+| first_name_kana    | string | null: false                        |
+| user_birth_date    | date   | null: false                        |
 
 ## items テーブル
 
 | Column             | Type       | Options                        |
 | ------             | ------     | -----------                    |
-| product name       | string     | null: false, foreign_key: true |
-| category_id        | integer    | null: false, foreign_key: true |
+| product name       | string     | null: false                    |
+| category_id        | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| seller             | string     | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
 ## purchase_record テーブル
 
 | Column             | Type       | Options                        |
 | ------             | ---------- | ------------------------------ |
-| buyer              | string     | null: false, foreign_key: true |
-| shipping_address   | string     | null: false, foreign_key: true |
+| buyer              | string     | null: false                    |
+| shipping_address   | string     | null: false                    |
 
 ## shipping_information テーブル
 
 | Column             | Type       | Options                        |
 | ------             | ---------- | ------------------------------ |
-| shipping_address   | string     | null: false, foreign_key: true |
-| card-number        | string     | null: false, foreign_key: true |
-| card-number        | string     | null: false, foreign_key: true |
-| card-exp           | string     | null: false, foreign_key: true |
-| card-cvc           | string     | null: false, foreign_key: true |
-| postal-code        | string     | null: false, foreign_key: true |
-| prefecture         | string     | null: false, foreign_key: true |
-| city               | string     | null: false, foreign_key: true |
-| addresses          | string     | null: false, foreign_key: true |
-| phone-number       | string     | null: false, foreign_key: true |
+| shipping_address   | string     | null: false                    |
+| postal_code        | string     | null: false                    |
+| prefecture         | string     | null: false                    |
+| city               | string     | null: false                    |
+| addresses          | string     | null: false                    |
+| phone_number       | string     | null: false                    |
