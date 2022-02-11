@@ -39,14 +39,28 @@ Things you may want to cover:
 | first_name_kana    | string | null: false                        |
 | user_birth_date    | date   | null: false                        |
 
+### アソシエーション
+
+
 ## items テーブル
 
-| Column             | Type       | Options                        |
-| ------             | ------     | -----------                    |
-| product name       | string     | null: false                    |
-| category_id        | integer    | null: false                    |
-| price              | integer    | null: false                    |
-| user               | references | null: false, foreign_key: true |
+| Column                        | Type       | Options                        |
+| ------                        | ------     | -----------                    |
+| item_image                    | string     | null: false                    |
+| item_name                     | string     | null: false                    |
+| item_info                     | string     | null: false                    |
+| item_category                 | string     | null: false                    |
+| item_sales_status             | string     | null: false                    |
+| item_shipping_fee_status      | string     | null: false                    |
+| item_prefecture               | string     | null: false                    |
+| item_scheduled_delivery       | string     | null: false                    |
+| item_price                    | integer    | null: false                    |
+| category_id                   | integer    | null: false                    |
+| price                         | integer    | null: false                    |
+| user                          | references | null: false, foreign_key: true |
+
+### アソシエーション
+
 
 ## purchase_record テーブル
 
@@ -54,6 +68,9 @@ Things you may want to cover:
 | ------             | ---------- | ------------------------------ |
 | user               | references | null: false, foreign_key: true |
 | item               | references | null: false, foreign_key: true |
+
+### アソシエーション
+
 
 ## shipping_information テーブル
 
@@ -63,4 +80,7 @@ Things you may want to cover:
 | prefecture         | integer    | null: false                    |
 | city               | string     | null: false                    |
 | addresses          | string     | null: false                    |
+| building           | string     | null: false                    |
 | phone_number       | string     | null: false                    |
+
+### アソシエーション
