@@ -5,7 +5,6 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
   end
 
-  pending "add some examples to (or delete) #{__FILE__}"
   describe 'ユーザー新規登録' do
     context '新規登録できるとき' do
     it 'nicknameとemail、passwordとpassword_confirmationが存在すれば登録できる' do
@@ -37,12 +36,6 @@ RSpec.describe User, type: :model do
   expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
 
-    it 'nicknameが7文字以上では登録できない' do
-      @user.nickname = 'aaaaaaa'
-  @user.valid?
-  expect(@user.errors.full_messages).to include('Nickname is too long (maximum is 6 characters)')
-    end
-
     it '重複したemailが存在する場合は登録できない' do
       @user.save
   another_user = FactoryBot.build(:user)
@@ -70,13 +63,6 @@ RSpec.describe User, type: :model do
   @user.valid?
   expect(@user.errors.full_messages).to include("Password is too long (maximum is 128 characters)")
     end
-
-    it 'nicknameが空では登録できない' do
-      user.nickname = ''
-      user.valid?
-      expect(user.errors.full_messages).to include("Nickname can't be blank")
-    end
-
   end
 end
 end
