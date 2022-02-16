@@ -65,15 +65,17 @@ RSpec.describe User, type: :model do
     end
 
     it 'passwordが英字のみの場合登録できない' do
-      @user.password = 'kana'
+      @user.password = 'abcdefg'
+      @user.password_confirmation = 'abcdefg'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+      expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
     end
 
     it 'passwordが数字のみの場合登録できない' do
-      @user.password = '123'
+      @user.password = '1234567'
+      @user.password_confirmation = '1234567'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+      expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
     end
 
     it 'passwordに全角文字が含む場合登録できない' do
@@ -91,7 +93,7 @@ RSpec.describe User, type: :model do
     it 'last_nameが半角文字が含まれている場合登録できない' do
       @user.last_name = 'kana'
       @user.valid?
-      expect(@user.errors.full_messages).to include()
+      expect(@user.errors.full_messages).to include("Last name is invalid. Input full-width characters.")
     end
 
     it 'first_nameが空の場合登録できない' do
@@ -103,7 +105,7 @@ RSpec.describe User, type: :model do
     it 'first_nameが半角文字が含まれている場合登録できない' do
       @user.first_name = 'kana'
       @user.valid?
-      expect(@user.errors.full_messages).to include()
+      expect(@user.errors.full_messages).to include("First name is invalid. Input full-width characters.")
     end
 
     it 'last_name_kanaが空の場合登録できない' do
@@ -113,9 +115,9 @@ RSpec.describe User, type: :model do
     end
 
     it 'last_name_kanaがカタカナ以外の文字が含まれている場合登録できない' do
-      @user.last_name_kana = 'カタカナ'
+      @user.last_name_kana = 'katakana'
       @user.valid?
-      expect(@user.errors.full_messages).to include()
+      expect(@user.errors.full_messages).to include("Last name kana is invalid. Input full-width katakana characters.")
     end
 
     it 'first_name_kanaが空の場合登録できない' do
@@ -125,9 +127,9 @@ RSpec.describe User, type: :model do
     end
 
     it 'first_name_kanaがカタカナ以外の文字が含まれている場合登録できない' do
-      @user.first_name_kana = 'カタカナ'
+      @user.first_name_kana = 'katakana'
       @user.valid?
-      expect(@user.errors.full_messages).to include()
+      expect(@user.errors.full_messages).to include("First name kana is invalid. Input full-width katakana characters.")
     end
 
     it 'user_birth_dateが空の場合登録できない' do
