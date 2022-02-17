@@ -15,12 +15,4 @@ class Item < ApplicationRecord
   validates :item_date_of_shipment, presence: true
   validates :item_price, presence: true
 
-  価格は、¥300~¥9,999,999の間のみ保存可能であること。
-
-  価格は半角数値のみ保存可能であること。
-  it 'passwordに全角文字が含む場合登録できない' do
-    @user.password = 'abc123'
-    @user.valid?
-    expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
-  end
 end

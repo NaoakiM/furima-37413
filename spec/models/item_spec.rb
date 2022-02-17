@@ -15,3 +15,9 @@ it 'priceが全角数字だと保存できないこと' do
   @donation_address.valid?
   expect(@donation_address.errors.full_messages).to include('Price is invalid')
 end
+
+it 'priceが空だと保存できないこと' do
+  @donation_address.price = ''
+  @donation_address.valid?
+  expect(@donation_address.errors.full_messages).to include('Price is invalid')
+end
