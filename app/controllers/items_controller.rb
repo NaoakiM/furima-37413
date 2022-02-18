@@ -10,13 +10,18 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def creat
+  def create
     # @items = Item.all
-    @furima = Furima.new(furima_params)
-    if @furima.save
+    @item = Item.new(furima_params)
+    if @item.save
       redirect_to root_path
     else
       render :new
     end
+  end
+
+    private
+  def furima_params
+    params.require(:item).permit(:item_name, :item_info, :item_category_id, :item_sales_status_id, :item_shipping_fee_status_id, :item_prefecture_id, :item_scheduled_delivery_id, :item_price, :image).merge(user_id: current_user.id)
   end
 end
