@@ -13,6 +13,6 @@ class Item < ApplicationRecord
   validates :item_shipping_fee_status_id, numericality: { other_than: 1 }
   validates :item_prefecture_id, numericality: { other_than: 1 }
   validates :item_scheduled_delivery_id, numericality: { other_than: 1 }
-  validates :item_price, presence: true
+  validates :item_price, numericality: { in: 300..9999999 }
 
 end

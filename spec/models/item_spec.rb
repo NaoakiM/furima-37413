@@ -1,3 +1,8 @@
+RSpec.describe User, type: :model do
+  before do
+    @donation_address = FactoryBot.build(:donation)
+  end
+
 it '商品名が空だと保存できない' do
   @donation_address.item_name = ''
   @donation_address.valid?
@@ -11,31 +16,31 @@ it '商品の説明が空だと保存できない' do
 end
 
 it '商品のカテゴリーの情報が空だと保存できない' do
-  @donation_address.item_category_id = ''
+  @donation_address.item_category_id = '---'
   @donation_address.valid?
   expect(@donation_address.errors.full_messages).to include("Item category id can't be blank")
 end
 
 it '商品の状態の情報が空だと保存できない' do
-  @donation_address.item_sales_status_id = ''
+  @donation_address.item_sales_status_id = '---'
   @donation_address.valid?
   expect(@donation_address.errors.full_messages).to include("Item sales status can't be blank")
 end
 
 it '配送料の負担の情報が空だと保存できないこと' do
-  @donation_address.item_shipping_fee_status_id = ''
+  @donation_address.item_shipping_fee_status_id = '---'
   @donation_address.valid?
   expect(@donation_address.errors.full_messages).to include('Item shipping fee status is invalid')
 end
 
 it '発送元の地域の情報が空だと保存できないこと' do
-  @donation_address.item_prefecture_id = ''
+  @donation_address.item_prefecture_id = '---'
   @donation_address.valid?
   expect(@donation_address.errors.full_messages).to include('Item prefecture is invalid')
 end
 
 it '発送までの日数の情報が空だと保存できないこと' do
-  @donation_address.item_scheduled_delivery_id = ''
+  @donation_address.item_scheduled_delivery_id = '---'
   @donation_address.valid?
   expect(@donation_address.errors.full_messages).to include('Item scheduled delivery is invalid')
 end
