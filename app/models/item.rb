@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   #ジャンルの選択が「--」の時は保存できないようにする
    
   has_one_attached :image
+  has_one :purchase_record
   validates :image, presence: true
   validates :item_name, presence: true
   validates :item_info, presence: true
