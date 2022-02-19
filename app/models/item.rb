@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   #空の投稿を保存できないようにする
 
   #ジャンルの選択が「--」の時は保存できないようにする
-   
+  belongs_to :user
   has_one_attached :image
   has_one :purchase_record
   validates :image, presence: true

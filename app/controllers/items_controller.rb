@@ -6,12 +6,10 @@ class ItemsController < ApplicationController
   end
 
   def new
-    # @items = Item.all
     @item = Item.new
   end
 
   def create
-    # @items = Item.all
     @item = Item.new(furima_params)
     if @item.save
       redirect_to root_path
