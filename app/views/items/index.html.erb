@@ -135,6 +135,11 @@
           <%= image_tag "item-sample.png", class: "item-img" %>
 
           <%# 商品が売れていればsold outを表示しましょう %>
+          <% if （ここに条件文） %>
+        <% <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div> %>
+         <% end %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
@@ -156,6 +161,14 @@
         <% end %>
       </li>
       <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+      <% @items.each do |item| %>
+    <div class="content_post" style="background-image: url(<%= tweet.image %>);">
+      <p><%= .text %></p>
+      <span class="name">
+        <%= item.name %>
+      </span>
+    </div>
+  <% end %>
 
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
       <%# 商品がある場合は表示されないようにしましょう %>
