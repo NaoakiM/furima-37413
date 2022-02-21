@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   # before_action :move_to_index, except: [:index]
   def index
     @items = Item.all
+    User.order("item_name")
   end
 
   def new
