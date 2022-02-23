@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!,only: [:new]
+  before_action :authenticate_user!,only: [:new, :edit]
   # before_action :move_to_index, except: [:index]
   def index
     @items = Item.all.order(created_at: :desc)
@@ -25,6 +25,15 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(furima_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
   end
 
     private
