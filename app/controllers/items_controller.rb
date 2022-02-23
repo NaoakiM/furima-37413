@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!,only: [:new, :edit]
+  before_action :authenticate_user!,only: [:new, :edit, :update]
   # before_action :move_to_index, except: [:index]
   def index
     @items = Item.all.order(created_at: :desc)
@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    unless current_user.id == @item.user.id
     @item = Item.find(params[:id])
   end
 
