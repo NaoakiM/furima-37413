@@ -85,7 +85,7 @@ has_one:shipping_information
 | item_prefecture_id | integer    | null: false                    |
 | city               | string     | null: false                    |
 | addresses          | string     | null: false                    |
-| building           | string     | null                           |
+| building           | string     |                                |
 | phone_number       | string     | null: false                    |
 
 ### アソシエーション
