@@ -5,13 +5,13 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @donation_address = DonationAddress.new
+    @purchase_record = PurchaseRecord.new
   end
 
   def create
-    @donation_address = DonationAddress.new(donation_params)
-    if @donation_address.valid?
-      @donation_address.save
+    @purchase_record = PurchaseRecord.new(purchase_params)
+    if @purchase_record.valid?
+      @purchase_record.save
       redirect_to root_path
     else
       render :new
@@ -20,12 +20,12 @@ class OrdersController < ApplicationController
 
   private
 
-  def donation_params
-    params.require(:donation_address).permit(:postal_code, :prefecture, :city, :house_number, :building_name, :price).merge(user_id: current_user.id)
+  def purchase_params
+    params.require(:purchase_record).permit(:postal_code, :prefecture, :city, :house_number, :building_name, :price).merge(user_id: current_user.id)
   end
 
   # 削除
   # def address_params
-  #   params.permit(:postal_code, :prefecture, :city, :house_number, :building_name).merge(donation_id: @donation.id)
+  #   params.permit(:postal_code, :prefecture, :city, :house_number, :building_name).merge(purchase_id: @purchase.id)
   # end
 end
