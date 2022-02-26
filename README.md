@@ -87,6 +87,7 @@ has_one:shipping_information
 | addresses          | string     | null: false                    |
 | building           | string     |                                |
 | phone_number       | string     | null: false                    |
+| purchase_record    | references | null: false, foreign_key: true |
 
 ### アソシエーション
 belongs_to:purchase_record
