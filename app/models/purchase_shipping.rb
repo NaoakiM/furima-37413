@@ -6,12 +6,10 @@ class PurchaseShipping
     # validates :user_id
       validates :postal_code_id, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
       validates :item_prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
-    #  validates :city, numericality: {other_than: 0, message: "can't be blank"}
-      validates :addresses, numericality: {other_than: 0, message: "can't be blank"}
-      validates :phone_number, format: {with: /\A[0-9]+\z/, message: "can't be blank"}
+      validates :city
+      validates :addresses
       validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "can't be blank"}
   end
-  
   
 
   def save
