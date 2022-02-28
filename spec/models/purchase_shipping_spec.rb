@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe PurchaseShipping, type: :model do
-  describe '寄付情報の保存' do
+  
   before do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:item)
     @purchase_shipping = FactoryBot.build(:purchase_shipping, user_id: user.id, item_id: item.id)
     sleep 0.1
   end
-
+  describe '購入情報の保存' do
   context '内容に問題ない場合' do
     it 'すべての値が正しく入力されていれば保存できること' do
       @purchase_shipping.valid?
