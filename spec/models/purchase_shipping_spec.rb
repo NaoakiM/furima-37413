@@ -75,19 +75,7 @@ RSpec.describe PurchaseShipping, type: :model do
         @purchase_shipping.valid?
         expect(@purchase_shipping.errors.full_messages).to include("Item can't be blank")
     end
-
-    it 'userが紐付いていなければ登録できない' do
-      @purchase_shipping.user_id = ''
-        @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include("User can't be blank")
-    end
-
-    it 'itemが紐付いていなければ登録できない' do
-      @purchase_shipping.item_id = ''
-        @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include("Item can't be blank")
-    end
-
+    
     it 'tokenが空では登録できない' do
       @purchase_shipping.token = ''
         @purchase_shipping.valid?
