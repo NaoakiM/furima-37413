@@ -1,8 +1,11 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, except: :index
-  before_action :set_item,only: [:create]
+  before_action :set_item,only: [:index, :create, :show]
+  before_action :move_to_index, only: [:index, :show]
 
   def index
+    # ログインしている人と出品者が同じ時または商品が売れてしまっている時はroot_pathにリダイレクトするという条件式
+    #  if user_signed_in? && nil != item.purchase_record
     @item = Item.find(params[:item_id])
     @purchase_shipping = PurchaseShipping.new
   end
@@ -37,6 +40,10 @@ class OrdersController < ApplicationController
       card: purchase_params[:token],    # カードトークン
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
+  end
+
+  def move_to_index
+    redirect_to root_path if current_user.id == @item.user.id || @item.purchase_record
   end
 
   # 削除
