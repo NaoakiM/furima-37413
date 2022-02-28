@@ -58,8 +58,8 @@ RSpec.describe PurchaseShipping, type: :model do
         expect(@purchase_shipping.errors.full_messages).to include("Phone number can't be blank")
     end
 
-    it 'phone_numberが半角数値で正しい形式でないと保存できないこと' do
-      @purchase_shipping.phone_number = '123'
+    it 'phone_numberが半角数値以外が入力されている場合' do
+      @purchase_shipping.phone_number = '１２３４５６７８９０'
         @purchase_shipping.valid?
         expect(@purchase_shipping.errors.full_messages).to include("Phone number can't be blank")
     end
@@ -92,12 +92,6 @@ RSpec.describe PurchaseShipping, type: :model do
       @purchase_shipping.token = ''
         @purchase_shipping.valid?
         expect(@purchase_shipping.errors.full_messages).to include("Token can't be blank")
-    end
-
-    it '電話番号は半角数値でなければ登録できない' do
-      @purchase_shipping.phone_number = '123'
-        @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include("Phone number can't be blank")
     end
 
     it '電話番号は9桁以下では登録できないこと' do
