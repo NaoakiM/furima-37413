@@ -25,7 +25,7 @@ RSpec.describe PurchaseShipping, type: :model do
     it 'postal_code_idが空だと保存できないこと' do
       @purchase_shipping.postal_code_id = ''
         @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@purchase_shipping.errors.full_messages).to include("Postal code can't be blank")
     end
 
     it 'postal_code_idが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
@@ -59,7 +59,7 @@ RSpec.describe PurchaseShipping, type: :model do
     end
 
     it 'phone_numberが半角数値で正しい形式でないと保存できないこと' do
-      @purchase_shipping.phone_number = ''
+      @purchase_shipping.phone_number = '123'
         @purchase_shipping.valid?
         expect(@purchase_shipping.errors.full_messages).to include("Phone number can't be blank")
     end
