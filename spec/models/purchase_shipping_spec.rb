@@ -100,6 +100,17 @@ RSpec.describe PurchaseShipping, type: :model do
         expect(@purchase_shipping.errors.full_messages).to include("Phone number can't be blank")
     end
 
+    it '電話番号は9桁以下では登録できないこと' do
+      @purchase_shipping.phone_number = '123456789'
+        @purchase_shipping.valid?
+        expect(@purchase_shipping.errors.full_messages).to include("Phone number can't be blank")
+    end
+
+    it '電話番号は12桁以上では登録できないこと' do
+      @purchase_shipping.phone_number = '123456789012'
+        @purchase_shipping.valid?
+        expect(@purchase_shipping.errors.full_messages).to include("Phone number can't be blank")
+    end
   end
 end
   pending "add some examples to (or delete) #{__FILE__}"
