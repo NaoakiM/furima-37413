@@ -5,7 +5,7 @@ RSpec.describe PurchaseShipping, type: :model do
   before do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:item)
-    @purchase_shipping = FactoryBot.build(:purchase_shipping, user_id: user.id)
+    @purchase_shipping = FactoryBot.build(:purchase_shipping, user_id: user.id, item_id: item.id)
     sleep 0.1
   end
 
@@ -64,16 +64,41 @@ RSpec.describe PurchaseShipping, type: :model do
         expect(@purchase_shipping.errors.full_messages).to include("Phone number can't be blank")
     end
 
-    # it 'priceが空だと保存できないこと' do
-    # end
-    # it 'priceが全角数字だと保存できないこと' do
-    # end
-    # it 'priceが1円未満では保存できないこと' do
-    # end
-    # it 'priceが1,000,000円を超過すると保存できないこと' do
-    # end
-    # it 'userが紐付いていないと保存できないこと' do
-    # end
+    it 'user_idが空では登録できないこと' do
+      @purchase_shipping.user_id = ''
+        @purchase_shipping.valid?
+        expect(@purchase_shipping.errors.full_messages).to include("User can't be blank")
+    end
+
+    it 'item_idが空では登録できないこと' do
+      @purchase_shipping.item_id = ''
+        @purchase_shipping.valid?
+        expect(@purchase_shipping.errors.full_messages).to include("Item can't be blank")
+    end
+
+    it 'userが紐付いていなければ登録できない' do
+      @purchase_shipping.user_id = ''
+        @purchase_shipping.valid?
+        expect(@purchase_shipping.errors.full_messages).to include("User can't be blank")
+    end
+
+    it 'itemが紐付いていなければ登録できない' do
+      @purchase_shipping.item_id = ''
+        @purchase_shipping.valid?
+        expect(@purchase_shipping.errors.full_messages).to include("Item can't be blank")
+    end
+
+    it 'tokenが空では登録できない' do
+      @purchase_shipping.token = ''
+        @purchase_shipping.valid?
+        expect(@purchase_shipping.errors.full_messages).to include("Token can't be blank")
+    end
+
+    it '電話番号は半角数値でなければ登録できない' do
+      @purchase_shipping.phone_number = '123'
+        @purchase_shipping.valid?
+        expect(@purchase_shipping.errors.full_messages).to include("Phone number can't be blank")
+    end
 
   end
 end
