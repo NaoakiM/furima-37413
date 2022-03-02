@@ -2,11 +2,11 @@ class PurchaseShipping
   include ActiveModel::Model
   attr_accessor :postal_code_id, :item_prefecture_id, :city, :addresses, :building, :phone_number, :token, :user_id, :item_id
   with_options presence: true do
-      validates :postal_code_id, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-      validates :item_prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
+      validates :postal_code_id, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
+      validates :item_prefecture_id, numericality: {other_than: 1, message: "を入力してください"}
       validates :city
       validates :addresses
-      validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "can't be blank"}
+      validates :phone_number, format: {with: /\A\d{10,11}\z/}
       validates :user_id
       validates :item_id
       validates :token

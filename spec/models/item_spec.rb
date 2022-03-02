@@ -19,7 +19,7 @@ RSpec.describe Item, type: :model do
     it '商品画像が空では出品出来ない' do
       @item.image = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Imageを入力してください")
+      expect(@item.errors.full_messages).to include("商品画像を入力してください")
     end
 
     it 'userが紐付いていなければ登録できないこと' do

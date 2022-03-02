@@ -25,43 +25,43 @@ RSpec.describe PurchaseShipping, type: :model do
     it 'postal_code_idが空だと保存できないこと' do
       @purchase_shipping.postal_code_id = ''
         @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include("Postal codeを入力してください")
+        expect(@purchase_shipping.errors.full_messages).to include("郵便番号を入力してください")
     end
 
     it 'postal_code_idが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
       @purchase_shipping.postal_code_id = '1234567'
         @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include("Postal codeis invalid. Include hyphen(-)")
+        expect(@purchase_shipping.errors.full_messages).to include("郵便番号は不正な値です")
     end
 
     it 'item_prefecture_idを選択していないと保存できないこと' do
       @purchase_shipping.item_prefecture_id = 0
         @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include("Item prefecture can't be blank")
+        expect(@purchase_shipping.errors.full_messages).to include()
     end
 
     it 'cityが空だと保存できないこと' do
       @purchase_shipping.city = ''
         @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include("Cityを入力してください")
+        expect(@purchase_shipping.errors.full_messages).to include("市区町村を入力してください")
     end
 
     it 'addressesが空だと保存できないこと' do
       @purchase_shipping.addresses = ''
         @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include("Item prefecturecan't be blank")
+        expect(@purchase_shipping.errors.full_messages).to include("番地を入力してください")
     end
 
     it 'phone_numberが空だと保存できないこと' do
       @purchase_shipping.phone_number = ''
         @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include("Item prefecturecan't be blank")
+        expect(@purchase_shipping.errors.full_messages).to include("電話番号を入力してください")
     end
 
     it 'phone_numberが半角数値以外が入力されている場合' do
       @purchase_shipping.phone_number = '１２３４５６７８９０'
         @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include("Phone numbercan't be blank")
+        expect(@purchase_shipping.errors.full_messages).to include("電話番号は不正な値です")
     end
 
     it 'user_idが空では登録できないこと' do
@@ -79,19 +79,19 @@ RSpec.describe PurchaseShipping, type: :model do
     it 'tokenが空では登録できない' do
       @purchase_shipping.token = ''
         @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include("Tokenを入力してください")
+        expect(@purchase_shipping.errors.full_messages).to include("トークンを入力してください")
     end
 
     it '電話番号は9桁以下では登録できないこと' do
       @purchase_shipping.phone_number = '123456789'
         @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include("Phone numbercan't be blank")
+        expect(@purchase_shipping.errors.full_messages).to include("電話番号は不正な値です")
     end
 
     it '電話番号は12桁以上では登録できないこと' do
       @purchase_shipping.phone_number = '123456789012'
         @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include("Phone numbercan't be blank")
+        expect(@purchase_shipping.errors.full_messages).to include("電話番号は不正な値です")
     end
   end
 end
