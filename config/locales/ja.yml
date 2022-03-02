@@ -10,6 +10,9 @@ ja:
         last_name_kana       : お名前カナ(全角)
         first_name_kana      : お名前カナ(全角)
         user_birth_date      : 生年月日
+      item:
+  activemodel:
+    attributes:
       purchase_shipping:
         text                 : テキスト
         image                : 画像
